@@ -1,0 +1,11 @@
+<policydb>
+    <!--for local use-->
+    <!--<path>localhost</path>-->
+    <!--for docker-->
+    <path>mongodb</path>
+    <port>27017</port>
+    <name>policyserv</name>
+    <collection>policies2</collection>
+    <user>admin</user>
+    <password>admin</password>
+</policydb>

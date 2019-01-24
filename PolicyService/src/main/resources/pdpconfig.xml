@@ -1,0 +1,17 @@
+<config defaultPDP="pdp" defaultAttributeFactory="attr"
+        defaultCombiningAlgFactory="comb" defaultFunctionFactory="func">
+    <pdp name="pdp">
+        <attributeFinderModule class="org.wso2.balana.finder.impl.CurrentEnvModule"/>
+        <attributeFinderModule class="org.wso2.balana.finder.impl.SelectorModule"/>
+        <attributeFinderModule class="org.wso2.balana.finder.impl.SelectorModule"/>
+        <!--this is important: this class will be used to retrieve the policies-->
+        <!--<policyFinderModule class="imi.ehealth.fhirlock.BaseXPolicyFinderModule"/>-->
+        <policyFinderModule class="imi.ehealth.fhirlock.MongoDbPolicyFinderModule"/>
+    </pdp>
+    <attributeFactory name="attr" useStandardDatatypes="true"/>
+    <functionFactory name="func" useStandardFunctions="true"/>
+    <combiningAlgFactory name="comb" useStandardAlgorithms="true">
+        <!-- for custom algorithms -->
+        <algorithm class="imi.ehealth.fhirlock.CheckAllPolDenyUnlessPermitAlg"/>
+    </combiningAlgFactory>
+</config>

@@ -1,0 +1,27 @@
+﻿version: '3.1'
+services:
+
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+   
+  mongoimport:
+    build: ./mongo
+    links:
+     - mongodb
+      
+     
+  policy:
+    build: ./PolicyService 
+    ports: 
+     - '4567:4567'
+     
+  hapi:
+    build: ./hapi-fhir-jpaserver  
+    ports:
+     - '8080:8080'  
+    links:
+     - policy
+   
